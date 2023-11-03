@@ -1,14 +1,15 @@
 from django.db import models
-from childcategory.models import ChildCategory
+from mptt.models import MPTTModel, TreeForeignKey
 
 
-
-class Category(models.Model):
+class Category(MPTTModel):
     name = models.CharField(max_length=150)
-    childcategory = models.ForeignKey(ChildCategory , on_delete=models.CASCADE)
+    parent = TreeForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='children')
 
     def __str__(self):
         return self.name
+    
 
-
-
+    
+    class MPTTMeta:
+            order_insertion_by = ['name']

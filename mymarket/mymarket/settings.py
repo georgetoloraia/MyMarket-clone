@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'items',
     'category',
-    'childcategory',
+    'mptt',
 ]
 
 MIDDLEWARE = [
