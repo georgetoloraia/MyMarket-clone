@@ -8,9 +8,8 @@ from rest_framework import permissions
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('items.urls')),
-    path('perent/', include('category.urls')),
-    # path('child/', include('childcategory.urls')),
+    path('items/', include('items.urls')),
+    path('category/', include('category.urls')),
     path('users/' , UserCreateView.as_view(), name='user-create' ),
     path('login/' , obtain_auth_token, name='login'),
     path('users/me' , CurrentUserView.as_view() , name='current-user'),
