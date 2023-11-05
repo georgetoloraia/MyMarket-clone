@@ -15,6 +15,11 @@ class ItemView(viewsets.ModelViewSet):
             return Item.objects.none() 
         
 
+
+class ItemListView(viewsets.ModelViewSet):
+    serializer_class = ItemSerializer
+    queryset = Item.objects.all()
+
 # class CategoryView(viewsets.ModelViewSet):
 #     queryset = Category.objects.all()
 #     serializer_class = CategorySerializer

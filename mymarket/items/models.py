@@ -1,7 +1,6 @@
 from django.db import models 
 from django.contrib.auth.models import User
 from category.models import Category
-from childcategory.models import ChildCategory
 
 
 
@@ -12,7 +11,7 @@ class Item(models.Model):
     specifications = models.BooleanField(default=False) 
     mobile = models.CharField(max_length=200)
     user = models.ForeignKey(User , related_name='item' , on_delete=models.CASCADE )
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     
     image = models.ImageField(upload_to='item_images/', blank=True , null=True)
     views = models.ManyToManyField(User, related_name='viewed_items', blank=True)
@@ -24,14 +23,3 @@ class Item(models.Model):
     def num_views(self):
         return self.views.count()
 
-
-
-# class Category(models.Model):
-#     name = models.CharField(max_length=100)
-#     service = models.CharField(max_length=250)
-#     rent = models.CharField(max_length=250)
-#     house_and_garden = models.CharField(max_length=250)
-#     techmic = models.CharField(max_length=250)
-#     hunting_and_fishing = models.CharField(max_length=250)
-#     music = models.CharField(max_length=250)
-#     children = models.CharField(max_length=250)
