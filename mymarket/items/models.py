@@ -23,14 +23,3 @@ class Item(models.Model):
     def num_views(self):
         return self.views.count()
 
-
-
-# class Category(models.Model):
-#     name = models.CharField(max_length=100)
-#     service = models.CharField(max_length=250)
-#     rent = models.CharField(max_length=250)
-#     house_and_garden = models.CharField(max_length=250)
-#     techmic = models.CharField(max_length=250)
-#     hunting_and_fishing = models.CharField(max_length=250)
-#     music = models.CharField(max_length=250)
-#     children = models.CharField(max_length=250)
