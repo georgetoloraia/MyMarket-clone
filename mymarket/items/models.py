@@ -6,7 +6,7 @@ from category.models import Category
 
 class Item(models.Model):
     title = models.CharField(max_length=250)
-    desctiption = models.CharField(max_length=500)
+    description = models.CharField(max_length=500)
     price = models.CharField(max_length=100 )
     specifications = models.BooleanField(default=False) 
     mobile = models.CharField(max_length=200)
