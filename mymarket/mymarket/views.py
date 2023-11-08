@@ -2,10 +2,12 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import UserCreateSerializer , UserSerializer 
+from .serializers import UserCreateSerializer , UserSerializer , UserListSerializer
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
-
+from django.contrib.auth.models import User
+from rest_framework.permissions import IsAdminUser
+from rest_framework import viewsets
 
 
 from rest_framework import permissions
@@ -35,3 +37,11 @@ class CurrentUserView(APIView):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
     
+
+class UserListView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        users = User.objects.all()
+        serializer = UserListSerializer(users, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

@@ -12,7 +12,6 @@ class Item(models.Model):
     mobile = models.CharField(max_length=200)
     user = models.ForeignKey(User , related_name='item' , on_delete=models.CASCADE )
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
-    
     image = models.ImageField(upload_to='item_images/', blank=True , null=True)
     views = models.ManyToManyField(User, related_name='viewed_items', blank=True)
 

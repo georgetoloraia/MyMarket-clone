@@ -4,16 +4,17 @@ from .serializers import ItemSerializer
 from .models import Item 
 
 class ItemView(viewsets.ModelViewSet):
+    queryset = Item.objects.all()
     serializer_class = ItemSerializer
     
 
-    def get_queryset(self):
-        user = self.request.user
-        if user.is_authenticated:
-            return Item.objects.filter(user=user)
-        else:
-            return Item.objects.none() 
-        
+    # def get_queryset(self):
+    #     user = self.request.user
+    #     if user.is_authenticated:
+    #         return Item.objects.filter(user=user)
+    #     else:
+    #         return Item.objects.none() 
+
 
 
 class ItemListView(viewsets.ModelViewSet):
